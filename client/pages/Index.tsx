@@ -1,14 +1,34 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function Index() {
+  const [demoMessage, setDemoMessage] = useState<string>("");
+
+  const handleDemoClick = async () => {
+    try {
+      const response = await fetch("/api/demo");
+      const data = await response.json();
+      setDemoMessage(data.message);
+    } catch (error) {
+      setDemoMessage("Error fetching demo");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-leo-gray">
       {/* Navigation */}
       <nav className="w-full bg-leo-gray shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]">
         <div className="max-w-[1280px] mx-auto px-4 lg:px-0">
           <div className="flex items-center justify-between h-[55px]">
-            <div className="text-leo-blue font-inter text-xs">
-              Hjem | Advokaterne | Om LeoLov | Kontakt
+            <div className="text-leo-blue font-inter text-xs space-x-4">
+              <a href="/" className="hover:underline">Hjem</a>
+              <span>|</span>
+              <a href="#team" className="hover:underline">Advokaterne</a>
+              <span>|</span>
+              <a href="#about" className="hover:underline">Om LeoLov</a>
+              <span>|</span>
+              <a href="#contact" className="hover:underline">Kontakt</a>
             </div>
             <div className="font-jura text-[32px] leading-none">
               <span className="text-leo-blue">Leo</span>
@@ -82,7 +102,7 @@ export default function Index() {
       </section>
 
       {/* Section 1: INTET PROBLEM */}
-      <section className="max-w-[1280px] mx-auto px-4 lg:px-11 py-16">
+      <section id="about" className="max-w-[1280px] mx-auto px-4 lg:px-11 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
           <div className="border-[8px] border-leo-dark-blue bg-leo-gray">
             <img
@@ -106,6 +126,14 @@ export default function Index() {
               Det er sådan vi har skabt en forretning der ikke kan andet end at
               vokse!
             </p>
+            <div className="mt-8 flex flex-col items-center gap-4">
+              <Button onClick={handleDemoClick} className="bg-leo-blue hover:bg-leo-dark-blue text-white">
+                Test API Connection
+              </Button>
+              {demoMessage && (
+                <p className="text-leo-blue font-inter text-sm">{demoMessage}</p>
+              )}
+            </div>
           </div>
         </div>
       </section>
@@ -140,7 +168,7 @@ export default function Index() {
       </section>
 
       {/* Team Section: MØD HOLDET */}
-      <section className="max-w-[1280px] mx-auto px-4 lg:px-11 py-16">
+      <section id="team" className="max-w-[1280px] mx-auto px-4 lg:px-11 py-16">
         <h2 className="text-leo-blue font-jura text-[48px] text-center mb-16">
           MØD HOLDET
         </h2>
@@ -258,7 +286,7 @@ export default function Index() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-leo-dark-blue mt-16">
+      <footer id="contact" className="bg-leo-dark-blue mt-16">
         <div className="max-w-[1280px] mx-auto px-4 lg:px-11 py-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             {/* Adresse */}
