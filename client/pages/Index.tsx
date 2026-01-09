@@ -1,6 +1,4 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 
 export default function Index() {
   const [demoMessage, setDemoMessage] = useState<string>("");
@@ -127,9 +125,12 @@ export default function Index() {
               vokse!
             </p>
             <div className="mt-8 flex flex-col items-center gap-4">
-              <Button onClick={handleDemoClick} className="bg-leo-blue hover:bg-leo-dark-blue text-white">
+              <button 
+                onClick={handleDemoClick}
+                className="px-4 py-2 rounded-md font-medium text-white bg-leo-blue hover:bg-leo-dark-blue transition-colors"
+              >
                 Test API Connection
-              </Button>
+              </button>
               {demoMessage && (
                 <p className="text-leo-blue font-inter text-sm">{demoMessage}</p>
               )}
