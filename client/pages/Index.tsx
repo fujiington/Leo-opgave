@@ -252,12 +252,16 @@ export default function Index() {
       {/* Location Section: HER BOR VI */}
       <section className="max-w-[1280px] mx-auto px-4 lg:px-11 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-          <div className="border-[8px] border-leo-dark-blue bg-leo-gray">
-            <img
-              src="https://api.builder.io/api/v1/image/assets/TEMP/bd1c60bd0b4b8a0986107281639ae68d6c63b6eb?width=1204"
-              alt="Seychelles location"
-              className="w-full h-full object-cover min-h-[400px] lg:min-h-[530px]"
-            />
+          <div className="border-[8px] border-leo-dark-blue bg-leo-gray overflow-hidden">
+            <iframe
+              src="https://maps.google.com/maps?q=Maldive+rd.+22,+Seychelles&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="100%"
+              style={{ minHeight: '400px' }}
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Leo-Lov ApS Location - Maldive rd. 22, Seychelles"
+              className="border-none"
+            ></iframe>
           </div>
           <div className="border-[8px] border-leo-dark-blue bg-leo-gray p-8 lg:p-16 flex flex-col justify-center">
             <h2 className="text-leo-blue font-jura text-[32px] text-center mb-8">
